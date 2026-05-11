@@ -131,3 +131,20 @@ body {
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.form-input {
+  width: 100%;
+  border-radius: 10px;
+  background: #f8f7f4;
+  padding: 12px 14px;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  color: #121212;
+  outline: none;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+.form-input::placeholder { color: #a7a7a7; }
+.form-input:focus {
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255, 62, 0, 0.2);
+}

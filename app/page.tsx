@@ -11,6 +11,13 @@ import {
 } from "./_components/illustrations";
 import { PhoneFrame } from "./_components/phone";
 import { Logo } from "./_components/logo";
+import {
+  TRIAL_DAYS,
+  PRICE_MXN,
+  PRICE_USD_APPROX,
+  PRICE_CURRENCY,
+  PRICE_CADENCE_ES,
+} from "./_lib/config";
 
 export default function Home() {
   return (
@@ -33,7 +40,7 @@ export default function Home() {
 function Nav() {
   return (
     <header className="sticky top-0 z-50 bg-[#fbfaf9]/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-5">
         <a href="#" className="flex items-center gap-2 text-[#343433]">
           <Logo className="h-7 w-7" />
           <span className="font-display text-[22px] tracking-[-0.6px] leading-none">
@@ -41,15 +48,15 @@ function Nav() {
           </span>
         </a>
         <nav className="hidden md:flex items-center gap-7 text-[14px] font-medium text-[#343433]">
-          <a className="hover:text-[#121212] transition-colors" href="#features">Features</a>
-          <a className="hover:text-[#121212] transition-colors" href="#how">How it works</a>
-          <a className="hover:text-[#121212] transition-colors" href="#pricing">Pricing</a>
-          <a className="hover:text-[#121212] transition-colors" href="#stories">Stories</a>
+          <a className="hover:text-[#121212] transition-colors" href="#features">Funciones</a>
+          <a className="hover:text-[#121212] transition-colors" href="#how">Cómo funciona</a>
+          <a className="hover:text-[#121212] transition-colors" href="#pricing">Precio</a>
+          <a className="hover:text-[#121212] transition-colors" href="#stories">Historias</a>
         </nav>
         <div className="flex items-center gap-2">
-          <a className="pill-light hidden sm:inline-flex" href="#">Log in</a>
-          <a className="pill-dark" href="#get-started">
-            Get started
+          <a className="pill-light hidden sm:inline-flex" href="/signin">Entrar</a>
+          <a className="pill-dark" href="/signup">
+            Empezar
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M3 6h6m0 0L6.5 3.5M9 6L6.5 8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -80,13 +87,13 @@ function Hero() {
         <div className="relative z-10 flex flex-col items-center text-center">
           <span className="mb-6 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[12px] font-medium tracking-[-0.14px] text-[#474645] shadow-[var(--shadow-subtle)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#00ca48]" />
-            Now serving · iOS & Android
+            Ya disponible · iOS y Android
           </span>
           <h1 className="font-display text-[44px] leading-[1.05] tracking-[-1.4px] text-[#343433] md:text-[68px] md:tracking-[-2.11px] md:leading-[1.09] max-w-[820px]">
-            Your taqueria&apos;s new
-            <br className="hidden md:block" /> favorite{" "}
+            El nuevo mesero favorito
+            <br className="hidden md:block" /> de tu{" "}
             <span className="relative inline-block">
-              waiter
+              taquería
               <svg
                 aria-hidden
                 className="absolute -bottom-3 left-0 w-full"
@@ -105,23 +112,24 @@ function Hero() {
             .
           </h1>
           <p className="mt-7 max-w-[520px] text-[17px] leading-[1.53] tracking-[-0.22px] text-[#474645]">
-            Komanda turns any phone into a tableside POS. Take orders in seconds,
-            work offline when the WiFi dies, charge in one tap, and send the
-            receipt by WhatsApp before your customer reaches the door.
+            Komanda convierte cualquier celular en un POS de mesa. Toma pedidos
+            en segundos, trabaja sin internet cuando se cae el WiFi, cobra con
+            un toque y manda el recibo por WhatsApp antes de que el cliente
+            llegue a la puerta.
           </p>
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
-            <a className="pill-dark px-6 py-4" href="#get-started">
-              Start free for 30 days
+            <a className="pill-dark px-6 py-4" href="/signup">
+              Empieza gratis {TRIAL_DAYS} días
               <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
                 <path d="M3 6h6m0 0L6.5 3.5M9 6L6.5 8.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
             <a className="link-ember px-2 py-3" href="#demo">
-              <PlayIcon /> Watch the 60-sec demo
+              <PlayIcon /> Ver demo de 60 segundos
             </a>
           </div>
           <p className="mt-6 text-[12px] tracking-[-0.14px] text-[#848281]">
-            No card required · Set up in under 4 minutes · Cancel anytime
+            Sin tarjeta · Lista en menos de 4 minutos · Cancelas cuando quieras
           </p>
         </div>
 
@@ -155,7 +163,7 @@ function LogoStrip() {
     <section className="border-y border-[#f2f0ed] bg-[#fbfaf9] py-10">
       <div className="mx-auto max-w-[1100px] px-6">
         <p className="text-center text-[12px] font-medium uppercase tracking-[1.4px] text-[#848281]">
-          Cooking for taquerías across México · CDMX, GDL, MTY
+          Sirviendo en taquerías de todo México · CDMX, GDL, MTY
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-[#474645]">
           {names.map((n) => (
@@ -178,54 +186,54 @@ function Features() {
       <div className="mx-auto max-w-[1100px]">
         <div className="max-w-[640px]">
           <p className="text-[13px] font-medium uppercase tracking-[1.4px] text-[#ff3e00]">
-            What&apos;s on the menu
+            Qué hay en el menú
           </p>
           <h2 className="mt-4 text-[36px] md:text-[44px] font-semibold tracking-[-1.14px] leading-[1.09] text-[#121212]">
-            Built for the rhythm of a real taquería —
-            <span className="text-[#ff3e00]"> loud, fast, and on its feet</span>.
+            Hecha al ritmo de una taquería de verdad —
+            <span className="text-[#ff3e00]"> ruidosa, rápida y siempre de pie</span>.
           </h2>
           <p className="mt-5 text-[17px] leading-[1.53] tracking-[-0.22px] text-[#474645] max-w-[560px]">
-            Three things matter at the table: get the order right, charge fast,
-            never lose the ticket. Komanda is engineered around that — and
-            nothing else.
+            Tres cosas importan en la mesa: que el pedido salga bien, cobrar
+            rápido y nunca perder la cuenta. Komanda está diseñada alrededor de
+            eso — y nada más.
           </p>
         </div>
 
         <div className="mt-16 grid gap-5 md:grid-cols-3">
           <FeatureCard
             icon={<OrdersIcon />}
-            title="Orders in seconds"
-            body="Tap a menu item, swipe to add a modifier, send it to the kitchen. Six taps from sit-down to fired."
+            title="Pedidos en segundos"
+            body="Tocas el platillo, deslizas para agregar modificador, va a cocina. Seis toques desde que se sientan hasta que entra a la plancha."
             accent="#0090ff"
           />
           <FeatureCard
             icon={<OfflineIcon />}
-            title="Works without signal"
-            body="Server in the back? WiFi fighting the microwave? Komanda queues every order locally and syncs the moment a bar appears."
+            title="Funciona sin señal"
+            body="¿El módem en la trastienda? ¿WiFi peleándose con el microondas? Komanda guarda cada pedido en el celular y sincroniza al primer rayita."
             accent="#00ca48"
           />
           <FeatureCard
             icon={<ChargeIcon />}
-            title="Close & charge in one tap"
-            body="Cash, transfer, or card — collect, mark paid, and ship a PDF receipt to WhatsApp in the same gesture."
+            title="Cierra y cobra con un toque"
+            body="Efectivo, transferencia o tarjeta — cobras, marcas pagado y mandas el recibo en PDF por WhatsApp en el mismo gesto."
             accent="#ffbb26"
           />
           <FeatureCard
             icon={<MenuIcon />}
-            title="Menu you can edit at noon"
-            body="Out of carnitas? Mark it 86'd from the dashboard and every waiter sees it on the next tap. No app rebuild, no restart."
+            title="Menú que editas al mediodía"
+            body="¿Se acabaron las carnitas? Las marcas como agotadas desde el panel y todos tus meseros lo ven al siguiente toque. Sin recompilar, sin reiniciar."
             accent="#ff3e00"
           />
           <FeatureCard
             icon={<ShieldIcon />}
-            title="Audit-ready by default"
-            body="Every void, every comp, every closed day — timestamped and signed by the user who did it. Your accountant will thank you."
+            title="Lista para auditar de fábrica"
+            body="Cada cancelación, cada cortesía, cada cierre de día — con fecha, hora y firma de quien lo hizo. Tu contador te lo va a agradecer."
             accent="#9f4fff"
           />
           <FeatureCard
             icon={<TeamIcon />}
-            title="Add a waiter in 12 seconds"
-            body="Send an invite link, they install Komanda, they're on the floor. No manager required, no SIM card to provision."
+            title="Da de alta un mesero en 12 segundos"
+            body="Le mandas el link de invitación, instala Komanda, ya está en piso. Sin gerente, sin SIM que provisionar."
             accent="#ff58ae"
           />
         </div>
@@ -246,9 +254,9 @@ function FeatureCard({
   accent: string;
 }) {
   return (
-    <div className="card-stone card-stone-hover p-8">
+    <div className="card-stone card-stone-hover p-9 md:p-10">
       <div
-        className="mb-5 grid h-11 w-11 place-items-center rounded-[14px]"
+        className="mb-6 grid h-12 w-12 place-items-center rounded-[14px]"
         style={{ background: `${accent}1A`, color: accent }}
       >
         {icon}
@@ -256,7 +264,7 @@ function FeatureCard({
       <h3 className="text-[19px] font-semibold tracking-[-0.25px] leading-[1.38] text-[#343433]">
         {title}
       </h3>
-      <p className="mt-2 text-[15px] leading-[1.47] tracking-[-0.2px] text-[#474645]">
+      <p className="mt-3 text-[15px] leading-[1.47] tracking-[-0.2px] text-[#474645]">
         {body}
       </p>
     </div>
@@ -270,25 +278,25 @@ function ShowcaseSection() {
         <div className="grid items-center gap-14 md:grid-cols-2">
           <div>
             <p className="text-[13px] font-medium uppercase tracking-[1.4px] text-[#0090ff]">
-              The order, in the pocket
+              La comanda, en el bolsillo
             </p>
             <h2 className="mt-4 text-[36px] md:text-[44px] font-semibold tracking-[-1.14px] leading-[1.09] text-[#121212]">
-              Every komanda has a number, a table, and a story.
+              Cada komanda tiene número, mesa e historia.
             </h2>
             <p className="mt-5 text-[17px] leading-[1.53] tracking-[-0.22px] text-[#474645] max-w-[480px]">
-              Items, modifiers, voids, comps — Komanda keeps the full thread of
-              every ticket so a manager can pick up exactly where the waiter
-              left off.
+              Platillos, modificadores, cancelaciones, cortesías — Komanda
+              guarda el hilo completo de cada cuenta para que un gerente retome
+              justo donde el mesero se quedó.
             </p>
             <ul className="mt-8 space-y-4">
-              <CheckItem>Auto-numbered tickets, per-day, per-location</CheckItem>
-              <CheckItem>Per-table running totals with tip estimation</CheckItem>
-              <CheckItem>Voids and comps require a reason — always</CheckItem>
-              <CheckItem>Close the day with one button, signed PDF in your inbox</CheckItem>
+              <CheckItem>Folios automáticos por día y por sucursal</CheckItem>
+              <CheckItem>Totales corrientes por mesa con propina sugerida</CheckItem>
+              <CheckItem>Cancelaciones y cortesías siempre piden motivo</CheckItem>
+              <CheckItem>Cierras el día con un botón y te llega un PDF firmado al correo</CheckItem>
             </ul>
             <div className="mt-9">
               <a href="#features" className="link-ember">
-                See the full feature tour →
+                Ver el recorrido completo →
               </a>
             </div>
           </div>
@@ -329,22 +337,22 @@ function HowItWorks() {
     {
       n: "01",
       color: "#ff3e00",
-      title: "Sign up & invite your floor",
-      body: "Create the org, paste your menu (or import from a CSV), send invite links to your meseros. Done in under 4 minutes.",
+      title: "Regístrate e invita a tu piso",
+      body: "Crea la organización, pega tu menú (o impórtalo de un CSV) y manda los links de invitación a tus meseros. Listo en menos de 4 minutos.",
       illo: <WaiterBlob className="h-20 w-20" />,
     },
     {
       n: "02",
       color: "#0090ff",
-      title: "Open komandas at the table",
-      body: "Each waiter opens orders straight from their phone. Numbers auto-increment, the kitchen sees the new ticket the second it's confirmed.",
+      title: "Abre komandas en la mesa",
+      body: "Cada mesero abre los pedidos desde su celular. Los folios se generan solos y la cocina ve el ticket en cuanto se confirma.",
       illo: <ReceiptBlob className="h-20 w-20" />,
     },
     {
       n: "03",
       color: "#00ca48",
-      title: "Charge, close, and review",
-      body: "Collect, mark paid, share the receipt. At the end of service, close the day — totals reconcile in the audit log.",
+      title: "Cobra, cierra y revisa",
+      body: "Cobras, marcas pagado y compartes el recibo. Al final del servicio cierras el día — los totales cuadran en la bitácora.",
       illo: <PesoBlob className="h-20 w-20" />,
     },
   ];
@@ -353,15 +361,15 @@ function HowItWorks() {
       <div className="mx-auto max-w-[1100px]">
         <div className="max-w-[640px]">
           <p className="text-[13px] font-medium uppercase tracking-[1.4px] text-[#848281]">
-            How it works
+            Cómo funciona
           </p>
           <h2 className="mt-4 text-[36px] md:text-[44px] font-semibold tracking-[-1.14px] leading-[1.09] text-[#121212]">
-            From paper pad to live POS in three short steps.
+            Del cuaderno al POS en tres pasos cortos.
           </h2>
         </div>
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {steps.map((s) => (
-            <div key={s.n} className="card-stone p-8">
+            <div key={s.n} className="card-stone p-9 md:p-10">
               <div className="flex items-start justify-between">
                 <span
                   className="font-display text-[44px] leading-none tracking-[-1.1px]"
@@ -371,10 +379,10 @@ function HowItWorks() {
                 </span>
                 <div className="float-slow">{s.illo}</div>
               </div>
-              <h3 className="mt-6 text-[19px] font-semibold tracking-[-0.25px] leading-[1.38] text-[#343433]">
+              <h3 className="mt-7 text-[19px] font-semibold tracking-[-0.25px] leading-[1.38] text-[#343433]">
                 {s.title}
               </h3>
-              <p className="mt-2 text-[15px] leading-[1.47] tracking-[-0.2px] text-[#474645]">
+              <p className="mt-3 text-[15px] leading-[1.47] tracking-[-0.2px] text-[#474645]">
                 {s.body}
               </p>
             </div>
@@ -392,37 +400,37 @@ function ComparisonSection() {
         <div className="grid items-start gap-12 md:grid-cols-2">
           <div>
             <p className="text-[13px] font-medium uppercase tracking-[1.4px] text-[#ff3e00]">
-              Why switch
+              Por qué cambiar
             </p>
             <h2 className="mt-4 text-[36px] md:text-[44px] font-semibold tracking-[-1.14px] leading-[1.09] text-[#121212]">
-              Designed for taquerías. Not retrofitted from a sit-down chain.
+              Diseñada para taquerías. No es un POS de cadena adaptado.
             </h2>
             <p className="mt-5 text-[17px] leading-[1.53] tracking-[-0.22px] text-[#474645] max-w-[460px]">
-              Most POS systems were built for a Cheesecake Factory in 2008 and
-              charge you $89 per terminal. Komanda runs on the phone in your
-              waiter&apos;s pocket and costs less than a kilo of carnitas.
+              La mayoría de los POS se hicieron para una cadena gringa en 2008
+              y te cobran MXN 1,800 por terminal. Komanda corre en el celular
+              del mesero y cuesta más o menos un kilo de carnitas al mes.
             </p>
           </div>
 
           <div className="grid gap-5">
             <CompareCard
               kind="bad"
-              title="Legacy POS terminals"
+              title="POS de toda la vida"
               points={[
-                "$1,200 hardware per station",
-                "Reboots when the WiFi blinks",
-                "PDF receipts? That'll be an upsell",
-                "Onboarding: a week and a trainer",
+                "Más de MXN 22,000 de hardware por terminal",
+                "Se reinicia cuando parpadea el WiFi",
+                "¿Recibos en PDF? Te los cobran aparte",
+                "Capacitación: una semana y un instructor",
               ]}
             />
             <CompareCard
               kind="good"
               title="Komanda"
               points={[
-                "Runs on phones your team already owns",
-                "Offline-first, syncs the moment WiFi returns",
-                "WhatsApp receipts ship by default",
-                "First komanda taken in under 4 minutes",
+                "Corre en los celulares que ya tienen tus meseros",
+                "Funciona sin internet y sincroniza al volver la señal",
+                "Recibos por WhatsApp incluidos de fábrica",
+                "Tu primera komanda en menos de 4 minutos",
               ]}
             />
           </div>
@@ -444,7 +452,7 @@ function CompareCard({
   const isGood = kind === "good";
   return (
     <div
-      className="card-stone p-7"
+      className="card-stone p-8 md:p-9"
       style={
         isGood
           ? { background: "#121212", boxShadow: "none", color: "#fff" }
@@ -534,10 +542,10 @@ function Testimonials() {
       <div className="mx-auto max-w-[1200px]">
         <div className="px-0 md:px-12">
           <p className="text-[13px] font-medium uppercase tracking-[1.4px] text-[#848281]">
-            Friends of Komanda
+            Amigos de Komanda
           </p>
           <h2 className="mt-4 text-[36px] md:text-[44px] font-semibold tracking-[-1.14px] leading-[1.09] text-[#121212] max-w-[720px]">
-            Taquerías that trade their notepads for a phone, and don&apos;t look back.
+            Taquerías que cambiaron el cuaderno por un teléfono y no miran atrás.
           </h2>
         </div>
 
@@ -546,7 +554,7 @@ function Testimonials() {
             {items.map((t) => (
               <article
                 key={t.handle}
-                className="card-stone shrink-0 w-[320px] sm:w-[360px] p-7"
+                className="card-stone shrink-0 w-[340px] sm:w-[380px] p-8 md:p-9"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
@@ -580,157 +588,191 @@ function Testimonials() {
 }
 
 function Pricing() {
+  const includedLeft = [
+    "Meseros y mesas ilimitados",
+    "Komandas ilimitadas por día",
+    "Motor de sincronización sin internet",
+    "Recibos por WhatsApp y PDF",
+    "Manejo de menú + platillos agotados",
+    "Cierre de día y exportaciones",
+  ];
+  const includedRight = [
+    "Bitácora (cancelaciones, cortesías, ediciones)",
+    "Aislamiento por sucursal con RLS",
+    "Apps de iOS y Android",
+    "Panel del dueño (web)",
+    "Soporte por correo, en español",
+    "Actualizaciones gratis, para siempre",
+  ];
+
   return (
-    <section id="pricing" className="px-6 py-28 md:py-36 bg-[#f8f7f4]">
-      <div className="mx-auto max-w-[1100px]">
-        <div className="text-center max-w-[680px] mx-auto">
+    <section id="pricing" className="relative px-6 py-28 md:py-36 bg-[#f8f7f4] overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 select-none">
+        <div className="absolute left-[6%] top-16 float-slow opacity-90">
+          <PesoBlob className="h-20 w-20" />
+        </div>
+        <div className="absolute right-[8%] top-24 float-medium opacity-90">
+          <CoinBlob className="h-16 w-16" />
+        </div>
+        <div className="absolute right-[14%] bottom-12 float-fast opacity-90">
+          <StarBlob className="h-12 w-12" />
+        </div>
+      </div>
+
+      <div className="relative mx-auto max-w-[1100px]">
+        <div className="text-center max-w-[700px] mx-auto">
           <p className="text-[13px] font-medium uppercase tracking-[1.4px] text-[#ff3e00]">
-            Pricing
+            Precio
           </p>
           <h2 className="mt-4 text-[36px] md:text-[44px] font-semibold tracking-[-1.14px] leading-[1.09] text-[#121212]">
-            One price. Every waiter. Every table.
+            Una taquería, un precio.{" "}
+            <span className="text-[#ff3e00]">Sin letra chiquita.</span>
           </h2>
           <p className="mt-5 text-[17px] leading-[1.53] tracking-[-0.22px] text-[#474645]">
-            No per-terminal fees, no transaction cuts, no &quot;premium support&quot; tier.
+            Sin cobro por mesero. Sin comisión por transacción. Sin paquete
+            &quot;premium&quot; que te quieran vender después. Una tarifa plana
+            en pesos y todos tus meseros en piso con celular.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3 max-w-[980px] mx-auto">
-          <PriceCard
-            name="Esquina"
-            price="0"
-            tagline="For one taquería, one waiter, learning the ropes."
-            features={["1 location", "Up to 2 waiters", "30-day audit log", "Email support"]}
-            cta="Start free"
-            highlight={false}
+        <div className="relative mt-14 mx-auto max-w-[860px] rounded-[28px] bg-[#121212] text-white overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none opacity-[0.08]">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "radial-gradient(#ffffff 1px, transparent 1px)",
+                backgroundSize: "22px 22px",
+              }}
+            />
+          </div>
+
+          <div className="relative grid md:grid-cols-[1.1fr_1fr]">
+            <div className="p-10 md:p-14 border-b md:border-b-0 md:border-r border-white/10">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#ff3e00] px-3 py-1 text-[11px] font-semibold uppercase tracking-[1px] text-white">
+                  Plan único
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium tracking-[0.4px] text-white/80">
+                  Prueba gratis {TRIAL_DAYS} días
+                </span>
+              </div>
+
+              <h3 className="mt-6 font-display text-[34px] tracking-[-1px] leading-none">
+                Komanda Completo
+              </h3>
+              <p className="mt-3 text-[15px] leading-[1.47] tracking-[-0.2px] text-white/70 max-w-[360px]">
+                Todo lo de abajo. Todos tus meseros. Todas tus mesas. Una
+                taquería. Cancelas cuando quieras — sin penalización ni
+                amarre anual.
+              </p>
+
+              <div className="mt-9 flex items-end gap-2">
+                <span className="font-display text-[80px] leading-[0.9] tracking-[-2.4px] tabular text-white">
+                  ${PRICE_MXN}
+                </span>
+                <div className="pb-3 flex flex-col">
+                  <span className="text-[13px] font-semibold uppercase tracking-[1.6px] text-[#ffbb26] leading-none">
+                    {PRICE_CURRENCY}
+                  </span>
+                  <span className="mt-1.5 text-[14px] text-white/60 tracking-[-0.18px]">
+                    {PRICE_CADENCE_ES}
+                  </span>
+                </div>
+              </div>
+
+              <p className="mt-3 text-[12px] tracking-[-0.14px] text-white/50">
+                ≈ USD ${PRICE_USD_APPROX} · Pagas en pesos, sin sorpresas de tipo de cambio.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="/signup"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-[14px] font-semibold tracking-[-0.18px] text-[#121212] transition-transform hover:translate-y-[-1px]"
+                >
+                  Empezar gratis {TRIAL_DAYS} días
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                    <path d="M3 6h6m0 0L6.5 3.5M9 6L6.5 8.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-[14px] font-medium text-white/90 transition-colors hover:bg-white/5"
+                >
+                  Hablar con ventas
+                </a>
+              </div>
+
+              <p className="mt-5 text-[12px] tracking-[-0.14px] text-white/50">
+                Sin tarjeta. Sin contrato. Cancelas cuando quieras.
+              </p>
+            </div>
+
+            <div className="p-10 md:p-14 bg-white/2">
+              <p className="text-[12px] font-semibold uppercase tracking-[1.4px] text-white/55">
+                Lo que incluye
+              </p>
+              <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                {[...includedLeft, ...includedRight].map((f) => (
+                  <div key={f} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 grid h-5 w-5 place-items-center rounded-full bg-[#00ca48]/15 text-[#00ca48] shrink-0">
+                      <svg width="11" height="11" viewBox="0 0 10 10" fill="none">
+                        <path d="M2 5l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <span className="text-[13.5px] leading-[1.4] tracking-[-0.18px] text-white/85">
+                      {f}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-4 md:grid-cols-3 max-w-[860px] mx-auto">
+          <PricingFootCard
+            color="#ff3e00"
+            title="¿Más de una sucursal?"
+            body="Cada taquería corre su propio plan. Te conectamos un dashboard combinado sin costo extra cuando son 3+."
           />
-          <PriceCard
-            name="Mercado"
-            price="49"
-            tagline="The plan most taquerías run on. Fits a busy floor."
-            features={[
-              "1 location",
-              "Unlimited waiters",
-              "Full audit log",
-              "WhatsApp receipts",
-              "Menu manager",
-              "Daily close-out exports",
-            ]}
-            cta="Start 30-day trial"
-            highlight={true}
+          <PricingFootCard
+            color="#0090ff"
+            title="¿Y el hardware?"
+            body="Cero. Komanda corre en los teléfonos que ya traen tus meseros. Si necesitas dispositivos, te recomendamos opciones desde MXN 2,500."
           />
-          <PriceCard
-            name="Cadena"
-            price="129"
-            tagline="Multi-location operators with a back office."
-            features={[
-              "Up to 5 locations",
-              "Unlimited waiters",
-              "Cross-location reports",
-              "Priority support",
-              "Custom menu imports",
-            ]}
-            cta="Talk to us"
-            highlight={false}
+          <PricingFootCard
+            color="#00ca48"
+            title="¿Devoluciones?"
+            body="Si el primer mes no te convence, te regresamos el pago completo sin preguntas. Te quedas con tus datos exportados."
           />
         </div>
-        <p className="mt-8 text-center text-[13px] text-[#848281] tracking-[-0.17px]">
-          Prices in USD per location, per month. Pesos at checkout — we don&apos;t play FX games.
-        </p>
       </div>
     </section>
   );
 }
 
-function PriceCard({
-  name,
-  price,
-  tagline,
-  features,
-  cta,
-  highlight,
+function PricingFootCard({
+  color,
+  title,
+  body,
 }: {
-  name: string;
-  price: string;
-  tagline: string;
-  features: string[];
-  cta: string;
-  highlight: boolean;
+  color: string;
+  title: string;
+  body: string;
 }) {
   return (
-    <div
-      className={`relative p-8 ${
-        highlight
-          ? "rounded-[16px] bg-[#121212] text-white"
-          : "card-stone"
-      }`}
-    >
-      {highlight && (
-        <span className="absolute -top-3 left-8 inline-flex items-center gap-1.5 rounded-full bg-[#ff3e00] px-3 py-1 text-[11px] font-semibold uppercase tracking-[1px] text-white">
-          Most popular
-        </span>
-      )}
-      <div className={highlight ? "text-white" : "text-[#343433]"}>
-        <h3 className="font-display text-[28px] tracking-[-0.8px] leading-none">
-          {name}
-        </h3>
-        <p
-          className={`mt-3 text-[14px] leading-[1.43] ${
-            highlight ? "text-white/70" : "text-[#848281]"
-          }`}
-        >
-          {tagline}
-        </p>
-      </div>
-      <div className="mt-6 flex items-end gap-1">
-        <span
-          className={`font-display text-[60px] leading-none tracking-[-1.8px] tabular ${
-            highlight ? "text-white" : "text-[#121212]"
-          }`}
-        >
-          ${price}
-        </span>
-        <span
-          className={`pb-2 text-[14px] ${
-            highlight ? "text-white/60" : "text-[#848281]"
-          }`}
-        >
-          /mo
-        </span>
-      </div>
-      <ul className="mt-6 space-y-2.5">
-        {features.map((f) => (
-          <li
-            key={f}
-            className={`flex items-start gap-2 text-[14px] leading-[1.43] tracking-[-0.18px] ${
-              highlight ? "text-white/85" : "text-[#474645]"
-            }`}
-          >
-            <span
-              className="mt-1 grid h-4 w-4 place-items-center rounded-full"
-              style={{
-                background: highlight ? "rgba(255,255,255,0.12)" : "#f2f0ed",
-                color: highlight ? "#fff" : "#00ca48",
-              }}
-            >
-              <svg width="9" height="9" viewBox="0 0 10 10" fill="none">
-                <path d="M2 5l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-            {f}
-          </li>
-        ))}
-      </ul>
-      <a
-        href="#get-started"
-        className={`mt-7 inline-flex w-full items-center justify-center rounded-full px-5 py-3.5 text-[14px] font-medium tracking-[-0.18px] transition-colors ${
-          highlight
-            ? "bg-white text-[#121212] hover:bg-[#f8f7f4]"
-            : "bg-[#121212] text-white hover:bg-[#343433]"
-        }`}
-      >
-        {cta}
-      </a>
+    <div className="card-stone p-7 md:p-8">
+      <span
+        className="inline-block h-1.5 w-8 rounded-full"
+        style={{ background: color }}
+      />
+      <h4 className="mt-4 text-[15px] font-semibold tracking-[-0.2px] text-[#343433]">
+        {title}
+      </h4>
+      <p className="mt-2 text-[13.5px] leading-[1.45] tracking-[-0.18px] text-[#474645]">
+        {body}
+      </p>
     </div>
   );
 }
@@ -738,7 +780,7 @@ function PriceCard({
 function FinalCta() {
   return (
     <section id="get-started" className="px-6 py-28 md:py-36">
-      <div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] bg-[#121212] px-8 py-16 md:px-16 md:py-24 text-white">
+      <div className="relative mx-auto max-w-[1100px] overflow-hidden rounded-[28px] bg-[#121212] px-10 py-20 md:px-20 md:py-28 text-white">
         <div className="pointer-events-none absolute inset-0 select-none opacity-90">
           <div className="absolute -left-6 -top-6 float-slow"><TacoBlob className="h-28 w-28" /></div>
           <div className="absolute right-8 -top-4 float-medium"><PesoBlob className="h-20 w-20" /></div>
@@ -748,18 +790,19 @@ function FinalCta() {
         </div>
         <div className="relative max-w-[640px]">
           <h2 className="font-display text-[40px] md:text-[58px] leading-[1.05] tracking-[-1.6px] md:tracking-[-2px]">
-            Take the next komanda on a phone.
+            Toma la próxima komanda en un teléfono.
           </h2>
           <p className="mt-5 text-[17px] leading-[1.53] tracking-[-0.22px] text-white/70 max-w-[480px]">
-            30-day free trial. No card. Set up before lunch service, run it
-            through dinner. If it doesn&apos;t pay for itself, walk away.
+            Prueba gratis {TRIAL_DAYS} días. Sin tarjeta. La configuras antes
+            de la comida y la corres en la cena. Si no se paga sola, te vas
+            sin compromiso.
           </p>
           <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
             <a
-              href="#"
+              href="/signup"
               className="inline-flex items-center gap-2 rounded-full bg-[#ff3e00] px-6 py-4 text-[14px] font-semibold tracking-[-0.18px] text-white transition-transform hover:translate-y-[-1px]"
             >
-              Start free
+              Empezar gratis
               <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
                 <path d="M3 6h6m0 0L6.5 3.5M9 6L6.5 8.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -768,7 +811,7 @@ function FinalCta() {
               href="#"
               className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-4 text-[14px] font-medium text-white/90 transition-colors hover:bg-white/5"
             >
-              Book a 15-min walkthrough
+              Agendar demo de 15 min
             </a>
           </div>
         </div>
@@ -788,7 +831,8 @@ function Footer() {
               <span className="font-display text-[22px] tracking-[-0.6px] leading-none">komanda</span>
             </a>
             <p className="mt-4 max-w-[280px] text-[14px] leading-[1.5] text-[#848281] tracking-[-0.18px]">
-              The POS for taquerías that runs in your waiter&apos;s pocket. Built in México for taquerías everywhere.
+              El POS para taquerías que cabe en el bolsillo del mesero. Hecho
+              en México para taquerías de todos lados.
             </p>
             <div className="mt-5 flex items-center gap-3">
               <SocialIcon><XLogo /></SocialIcon>
@@ -801,30 +845,30 @@ function Footer() {
             </div>
           </div>
           <FooterCol
-            title="Product"
+            title="Producto"
             links={[
-              ["Features", "#features"],
-              ["How it works", "#how"],
-              ["Pricing", "#pricing"],
-              ["Changelog", "#"],
+              ["Funciones", "#features"],
+              ["Cómo funciona", "#how"],
+              ["Precio", "#pricing"],
+              ["Novedades", "#"],
             ]}
           />
           <FooterCol
-            title="Company"
+            title="Empresa"
             links={[
-              ["About", "#"],
+              ["Nosotros", "#"],
               ["Blog", "#"],
-              ["Stories", "#stories"],
-              ["Press", "#"],
+              ["Historias", "#stories"],
+              ["Prensa", "#"],
             ]}
           />
           <FooterCol
-            title="Support"
+            title="Soporte"
             links={[
-              ["Help center", "#"],
+              ["Centro de ayuda", "#"],
               ["Onboarding", "#"],
-              ["Status", "#"],
-              ["Contact", "mailto:hola@komanda.app"],
+              ["Estado", "#"],
+              ["Contacto", "mailto:hola@komanda.app"],
             ]}
           />
         </div>
@@ -833,9 +877,9 @@ function Footer() {
             © 2026 Komanda. Hecho con cariño en CDMX.
           </p>
           <div className="flex items-center gap-5 text-[13px] text-[#848281]">
-            <a className="hover:text-[#343433] transition-colors" href="#">Privacy</a>
-            <a className="hover:text-[#343433] transition-colors" href="#">Terms</a>
-            <a className="hover:text-[#343433] transition-colors" href="#">Security</a>
+            <a className="hover:text-[#343433] transition-colors" href="#">Privacidad</a>
+            <a className="hover:text-[#343433] transition-colors" href="#">Términos</a>
+            <a className="hover:text-[#343433] transition-colors" href="#">Seguridad</a>
           </div>
         </div>
       </div>

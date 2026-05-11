@@ -17,14 +17,22 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Komanda — the taqueria POS your waiters will actually use",
+  title: "Komanda — el POS para taquerías que tus meseros sí van a usar",
   description:
-    "Komanda turns any phone into a tableside POS for taquerías. Take orders in seconds, work offline, charge in one tap, and share PDF receipts on WhatsApp.",
+    "Komanda convierte cualquier celular en un POS de mesa. Toma pedidos en segundos, trabaja sin internet, cobra con un toque y comparte recibos por WhatsApp.",
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/komanda-mascot.png", sizes: "1024x1024", type: "image/png" },
+    ],
+    apple: "/komanda-mascot.png",
+  },
   openGraph: {
     title: "Komanda — POS para taquerías",
     description:
       "La comanda en el bolsillo del mesero. Pedidos en segundos, sin internet, recibos por WhatsApp.",
     type: "website",
+    images: ["/komanda-mascot.png"],
   },
 };
 
@@ -35,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es-MX"
       className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#fbfaf9] text-[#474645]">
